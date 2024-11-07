@@ -1,0 +1,76 @@
+def create_account(a,b):
+    key_pass[a] = b
+    print("Account added!")
+    return key_pass
+def balance(bal):
+    print(f"your balance is RS{bal:.2f}")
+    return
+def deposit(bal):
+    amount = float(input("Enter the amount to deposit :"))
+    if amount<0:
+        print("Enter a valid amount!")
+        return 0
+    else:
+        return amount
+def withdraw(bal):
+    withdraw = float(input("Enter the amount to withdraw:"))
+    if(withdraw>bal):
+        print("Insufficient funds!!")
+        return 0
+    else:
+        return withdraw
+def main():
+    bal = 0
+    while(True):
+        print("To show Balance press 1 :")
+        print("To Deposit press 2 :")
+        print("To Withdraw press 3 :")
+        print("Exit? press 4 : ")
+        press = input("Enter the number between 1-4 for the process : ")
+        if(press == '1'):
+            balance(bal)
+        elif(press == '2'):
+            bal+=deposit(bal)
+        elif(press == '3'):
+            bal-=withdraw(bal)
+        elif(press == '4'):
+            break
+        else:
+            print("Enter a  number between 1 to 4")
+    print("****THANK YOU****")
+    
+key_pass = {'vasee':1304,'tamil':2345,'jay':6756,'susmitha':5463,'arive':7685,'kumar':3452,'dharan':7689}
+z = 0
+time = 0
+while(True):
+    print("Do you have an acount ?")
+    g = input("YES or NO :")
+    if(g == 'yes'):
+        print("You have only 3 chance ")
+        while(time<3):
+            user = input("Enter your user name : ")
+            password = int(input("Enter your password(only numbers) : "))
+            if(user in key_pass.keys()):
+                if(key_pass[user] == password):
+                    if __name__ == '__main__':
+                        main()
+                else:
+                    print("Your Password is incorrect")
+                    time+=1
+            else:
+                print("Your user name is incorrect!")
+                time+=1
+                
+    elif(g == 'no'):
+        print("Create the account!")
+        while(z==0):
+            a = input("Enter Your user name :")
+            if a in key_pass:
+                print("User name not valid enter another user name !!")
+            else:
+                b = int(input("Enter your password  :"))
+                create_account(a,b)
+                z=1
+    else:
+        print("Enter Yes or No")
+        break
